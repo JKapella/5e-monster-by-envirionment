@@ -41,5 +41,8 @@ h1 {
 }
 
 .monster-details-cell {
+    overflow: auto;
     border: 1px solid #2D2E2F;
+    margin: 2px 20px;
+    padding: 5px;
 }

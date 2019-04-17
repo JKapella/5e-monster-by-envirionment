@@ -66,7 +66,8 @@ function setupMonsterButtonEvenListeners() {
 function processMonsterDetailsHTML(monsterDetails) {
     let html =
 `<div class='monster-details-cell'>
-
+    <h3>${monsterDetails.name}</h3>
+    <p>${monsterDetails.size} ${monsterDetails.type}, ${monsterDetails.alignment}</p>
 </div>`
     return html
 }
@@ -82,6 +83,7 @@ async function processUserEnvironmentSelection(selection) {
 async function printUserMonsterSelection(selection) {
     let monsterDetails = await fetch(selection.id).then(data => data.json())
     let html = processMonsterDetailsHTML(monsterDetails)
+    console.log(monsterDetails)
     selection.parentNode.insertAdjacentHTML('afterend', html);
 }
 
