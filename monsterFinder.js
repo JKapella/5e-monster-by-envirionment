@@ -84,7 +84,8 @@ async function printUserMonsterSelection(selection) {
     let monsterDetails = await fetch(selection.id).then(data => data.json())
     let html = processMonsterDetailsHTML(monsterDetails)
     console.log(monsterDetails)
-    selection.parentNode.insertAdjacentHTML('afterend', html);
+    console.log(selection.parentNode)
+    selection.parentNode.insertAdjacentHTML('afterend', html)
 }
 
 setUpButtonEventListeners()
