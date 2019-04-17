@@ -53,11 +53,36 @@ function createHTMLBlock(name, url) {
     return html
 }
 
+function setupMonsterButtonEvenListeners() {
+    let buttons = document.querySelectorAll('.monster-button-link')
+    buttons.forEach(button => {
+        button.addEventListener('click', e => {
+            let selection = e.target
+            printUserMonsterSelection(selection)
+        })
+    })
+}
+
+function processMonsterDetailsHTML(monsterDetails) {
+    let html =
+`<div class='monster-details-cell'>
+
+</div>`
+    return html
+}
+
 async function processUserEnvironmentSelection(selection) {
     let monstersForEnvironmentArray = getMonsterNamesForEnvironment(selection)
     let fullMonsterList = await fetch('http://www.dnd5eapi.co/api/monsters').then(data => data.json())
     let monstersToPrintToScreen = compareAPIListToEnvironment(monstersForEnvironmentArray, fullMonsterList.results)
     printMonstersToScreen(monstersToPrintToScreen)
+    setupMonsterButtonEvenListeners()
+}
+
+async function printUserMonsterSelection(selection) {
+    let monsterDetails = await fetch(selection.id).then(data => data.json())
+    let html = processMonsterDetailsHTML(monsterDetails)
+    selection.parentNode.insertAdjacentHTML('afterend', html);
 }
 
 setUpButtonEventListeners()
