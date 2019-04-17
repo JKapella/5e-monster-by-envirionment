@@ -1,15 +1,17 @@
-//ON PAGE LOAD
-
-//
-
 function setUpButtonEventListeners() {
     let buttons = document.querySelectorAll('button')
 
     buttons.forEach((button)=> {
         button.addEventListener('click', e => {
-            e.target.value
+            let selection = e.target.value
+            processUserEnvironmentSelection(selection)
         })
     })
+}
+
+function processUserEnvironmentSelection(selection) {
+    var monstersForEnvironmentSelectedArray = getMonsterNamesForEnvironment(selection)
+    console.log(monstersForEnvironmentSelectedArray)
 }
 
 setUpButtonEventListeners()
