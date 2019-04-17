@@ -1,6 +1,19 @@
 //ON PAGE LOAD
 
-//GET THE
+//
+
+function setUpButtonEventListeners() {
+    let buttons = document.querySelectorAll('button')
+
+    buttons.forEach((button)=> {
+        button.addEventListener('click', e => {
+            e.target.value
+        })
+    })
+}
+
+
+setUpButtonEventListeners()
 
 
 //Do a request to ... http://www.dnd5eapi.co/ ... get all monsters, using http://dnd5eapi.co/api/
