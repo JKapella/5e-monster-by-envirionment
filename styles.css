@@ -2,17 +2,10 @@
     box-sizing: border-box;
 }
 
-html, body {
-    margin: 0;
-    height: 100%;
-    padding: 0;
-}
-
 body {
+    padding-top: 1px;
     background: #A59D8E;
     color: #2D2E2F;
-    box-shadow: inset 0 0 10px #000000;
-
 }
 
 h1 {
@@ -26,6 +19,9 @@ h1 {
 
 .monster-results-cell {
     overflow: auto;
+    border: 1px solid #2D2E2F;
+    margin: 2px 0;
+    padding: 5px;
 }
 
 .monster-name {
