@@ -37,7 +37,7 @@ function compareAPIListToEnvironment(environmentList, apiMonsterList) {
 }
 
 function printMonstersToScreen(monsters) {
-    var output = ''
+    var output = `<h3>Results:</h3>`
     for (var monster in monsters) {
         output += createHTMLBlock(monsters[monster].name, monsters[monster].url)
     }
@@ -45,12 +45,11 @@ function printMonstersToScreen(monsters) {
 }
 
 function createHTMLBlock(name, url) {
-
     var html = `
 <div class='monster-results-cell'>
-<span>${name}</span><a href='${url}'>See this monster!</a>
+<div class='monster-name'>${name}</div>
+<div id='${url}' class='monster-button-link'>See this monster!</div>
 </div>`
-
     return html
 }
 

@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+}
+
+body {
+    background: #A59D8E;
+    color: #2D2E2F;
+    box-shadow: inset 0 0 10px #000000;
+
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.monster-results-cell {
+    overflow: auto;
+}
+
+.monster-name {
+    width: 300px;
+    float: left;
+}
+
+.monster-button-link {
+    width: 200px;
+    float: right;
+}
