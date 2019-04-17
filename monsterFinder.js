@@ -27,7 +27,7 @@ function setUpButtonEventListeners() {
 function compareAPIListToEnvironment(environmentList, apiMonsterList) {
     let monstersToPrintToScreen = []
     for (var monster in apiMonsterList) {
-        environmentList.forEach(monsterInEnvironment=>{
+        environmentList.forEach(monsterInEnvironment => {
             if (apiMonsterList[monster].name == monsterInEnvironment) {
                 monstersToPrintToScreen.push(apiMonsterList[monster])
             }
@@ -36,8 +36,22 @@ function compareAPIListToEnvironment(environmentList, apiMonsterList) {
     return monstersToPrintToScreen
 }
 
-function printMonstersToScreen() {
+function printMonstersToScreen(monsters) {
+    var output = ''
+    for (var monster in monsters) {
+        output += createHTMLBlock(monsters[monster].name, monsters[monster].url)
+    }
+    document.getElementById('resultsDisplayArea').innerHTML = output
+}
 
+function createHTMLBlock(name, url) {
+
+    var html = `
+<div class='monster-results-cell'>
+<span>${name}</span><a href='${url}'>See this monster!</a>
+</div>`
+
+    return html
 }
 
 async function processUserEnvironmentSelection(selection) {
@@ -45,10 +59,7 @@ async function processUserEnvironmentSelection(selection) {
     let fullMonsterList = await fetch('http://www.dnd5eapi.co/api/monsters')
     let fullMonsterListObject =  await fullMonsterList.json()
     let monstersToPrintToScreen = compareAPIListToEnvironment(monstersForEnvironmentArray, fullMonsterListObject.results)
-    printMonstersToScreen()
+    printMonstersToScreen(monstersToPrintToScreen)
 }
 
 setUpButtonEventListeners()
-
-//Do a request to ... http://www.dnd5eapi.co/ ... get all monsters, using http://dnd5eapi.co/api/
-//Each of these monsters has another URL to do an API call to get full info on the monster
