@@ -48,7 +48,7 @@ function createHTMLBlock(name, url) {
     var html = `
 <div class='monster-results-cell'>
 <div class='monster-name'>${name}</div>
-<div id='${url}' class='monster-button-link'>See this monster!</div>
+<div id='${url}' class='monster-button-link'>See monster details!</div>
 </div>`
     return html
 }
@@ -63,12 +63,11 @@ function setupMonsterButtonEvenListeners() {
     })
 }
 
-function processMonsterDetailsHTML(monsterDetails) {
+function processMonsterDetailsHTML(monsterDetails, oldHTML) {
     let html =
-`<div class='monster-details-cell'>
-    <h3>${monsterDetails.name}</h3>
-    <p>${monsterDetails.size} ${monsterDetails.type}, ${monsterDetails.alignment}</p>
-</div>`
+`<div id='${oldHTML}' class='monster-button-link'>Close</div>
+<h3>${monsterDetails.name}</h3>
+<p>${monsterDetails.size} ${monsterDetails.type}, ${monsterDetails.alignment}</p>`
     return html
 }
 
@@ -82,10 +81,13 @@ async function processUserEnvironmentSelection(selection) {
 
 async function printUserMonsterSelection(selection) {
     let monsterDetails = await fetch(selection.id).then(data => data.json())
-    let html = processMonsterDetailsHTML(monsterDetails)
+    let storedHTML = selection.parentNode.innerHTML
+    let html = processMonsterDetailsHTML(monsterDetails, storedHTML)
     console.log(monsterDetails)
-    console.log(selection.parentNode)
-    selection.parentNode.insertAdjacentHTML('afterend', html)
+    selection.parentNode.innerHTML = html
+    document.getElementById(storedHTML).addEventListener('click', (e) => {
+        e.target.parentNode.innerHTML = e.target.id
+    })
 }
 
 setUpButtonEventListeners()

@@ -6,10 +6,16 @@ body {
     padding-top: 1px;
     background: #A59D8E;
     color: #2D2E2F;
+    font-family: 'IM Fell English SC', serif;
 }
 
 h1 {
     text-align: center;
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 1.5rem;
 }
 
 .container {
@@ -17,10 +23,14 @@ h1 {
     margin: 0 auto;
 }
 
+.main-area {
+    border-top: 2px solid #2D2E2F;
+}
+
 .monster-results-cell {
     overflow: auto;
     border: 1px solid #2D2E2F;
-    margin: 2px 0;
+    margin: 5px 0;
     padding: 10px 50px;
 }
 
@@ -32,17 +42,14 @@ h1 {
 .monster-button-link {
     width: 200px;
     float: right;
-    background-color: lightblue;
+    background-color: #A59D8E;
+    border: 1px solid #2D2E2F;
+    text-align: center;
+    transition: 0.5s;
 }
 
 .monster-button-link:hover {
-    background-color: red;
+    background-color: #2D2E2F;
+    color: #A59D8E;
     cursor: pointer;
-}
-
-.monster-details-cell {
-    overflow: auto;
-    border: 1px solid #2D2E2F;
-    margin: 2px 20px;
-    padding: 5px;
 }
