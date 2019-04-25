@@ -81,6 +81,8 @@ async function processUserEnvironmentSelection(selection) {
 
 async function printUserMonsterSelection(selection) {
     let monsterDetails = await fetch(selection.id).then(data => data.json())
+    //store the url and the monster name?
+
     let storedHTML = selection.parentNode.innerHTML
     let html = processMonsterDetailsHTML(monsterDetails, storedHTML)
     console.log(monsterDetails)

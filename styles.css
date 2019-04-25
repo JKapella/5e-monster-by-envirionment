@@ -18,6 +18,10 @@ h3 {
     font-size: 1.5rem;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .container {
     width: 1000px;
     margin: 0 auto;
